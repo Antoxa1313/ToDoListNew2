@@ -16,33 +16,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="46" translatesAutoresizingMaskIntoConstraints="NO" id="c7c-km-hdj">
-                                <rect key="frame" x="20" y="248" width="353" height="132.66666666666666"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IB1-8U-c7o">
-                                        <rect key="frame" x="0.0" y="0.0" width="353" height="43.333333333333336"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RVI-OB-g36">
-                                        <rect key="frame" x="0.0" y="89.333333333333329" width="353" height="43.333333333333329"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="129" translatesAutoresizingMaskIntoConstraints="NO" id="wsj-Yz-Mad">
-                                <rect key="frame" x="50" y="432" width="303" height="34.333333333333336"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IB1-8U-c7o">
+                                <rect key="frame" x="20" y="253.00000000000003" width="353" height="43.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RVI-OB-g36">
+                                <rect key="frame" x="20" y="346.33333333333331" width="353" height="43.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="129" translatesAutoresizingMaskIntoConstraints="NO" id="wsj-Yz-Mad">
+                                <rect key="frame" x="35" y="440" width="323" height="34.333333333333314"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWm-fT-7TK">
-                                        <rect key="frame" x="0.0" y="0.0" width="87" height="34.333333333333336"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="97" height="34.333333333333336"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Sign In"/>
+                                        <connections>
+                                            <action selector="signInButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6oj-MS-67w"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIs-A6-cFB">
-                                        <rect key="frame" x="216" y="0.0" width="87" height="34.333333333333336"/>
+                                        <rect key="frame" x="226" y="0.0" width="97" height="34.333333333333336"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Register"/>
+                                        <connections>
+                                            <action selector="registerButtonPresse:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vfJ-5S-NHf"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -55,11 +56,22 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="c7c-km-hdj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="gac-RE-CFE"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="c7c-km-hdj" secondAttribute="trailing" constant="20" id="oYP-Qk-eNY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RVI-OB-g36" secondAttribute="trailing" constant="20" id="9D8-0j-Qn9"/>
+                            <constraint firstItem="RVI-OB-g36" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="9TR-go-14a"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IB1-8U-c7o" secondAttribute="trailing" constant="20" id="CpN-Lt-27R"/>
+                            <constraint firstItem="wsj-Yz-Mad" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="TzN-2B-fk9"/>
+                            <constraint firstItem="IB1-8U-c7o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="UCe-yj-wud"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wsj-Yz-Mad" secondAttribute="trailing" constant="35" id="fHw-fe-ILJ"/>
+                            <constraint firstItem="wsj-Yz-Mad" firstAttribute="top" secondItem="RVI-OB-g36" secondAttribute="bottom" constant="50" id="lc3-7f-csX"/>
+                            <constraint firstItem="IB1-8U-c7o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="n8D-ER-sCT"/>
+                            <constraint firstItem="RVI-OB-g36" firstAttribute="top" secondItem="IB1-8U-c7o" secondAttribute="bottom" constant="50" id="yNx-s9-zzb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HMi-KN-8cF"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="IB1-8U-c7o" id="LJI-Tn-RWx"/>
+                        <outlet property="passwordTextField" destination="RVI-OB-g36" id="WZl-H6-6jW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -68,13 +80,37 @@
         <!--Task View Controller-->
         <scene sceneID="FCT-a4-8e2">
             <objects>
-                <viewController id="10z-NZ-sUx" customClass="TaskViewController" customModule="ToDoListNewProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="task" id="10z-NZ-sUx" customClass="TaskViewController" customModule="ToDoListNewProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4z0-Pa-uv6">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="soB-ed-hA0">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1wb-SN-p2r">
+                                <rect key="frame" x="312" y="28" width="55" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Add"/>
+                                <connections>
+                                    <action selector="addButtonPressed:" destination="10z-NZ-sUx" eventType="touchUpInside" id="O0U-6k-s7z"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="2Hg-c3-CYR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="soB-ed-hA0" firstAttribute="top" secondItem="2Hg-c3-CYR" secondAttribute="top" id="0As-dN-gNI"/>
+                            <constraint firstItem="2Hg-c3-CYR" firstAttribute="bottom" secondItem="soB-ed-hA0" secondAttribute="bottom" id="EqG-z1-7xl"/>
+                            <constraint firstItem="2Hg-c3-CYR" firstAttribute="trailing" secondItem="soB-ed-hA0" secondAttribute="trailing" id="GR5-cf-mYx"/>
+                            <constraint firstItem="soB-ed-hA0" firstAttribute="leading" secondItem="2Hg-c3-CYR" secondAttribute="leading" id="tZy-gW-VDB"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="soB-ed-hA0" id="6Di-Sy-J91"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kyC-EQ-0lE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -83,7 +119,7 @@
         <!--Task Detail View Controller-->
         <scene sceneID="9tY-Iz-gCu">
             <objects>
-                <viewController id="vou-BY-Jfa" customClass="TaskDetailViewController" customModule="ToDoListNewProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detail" id="vou-BY-Jfa" customClass="TaskDetailViewController" customModule="ToDoListNewProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uzK-h4-rzZ">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

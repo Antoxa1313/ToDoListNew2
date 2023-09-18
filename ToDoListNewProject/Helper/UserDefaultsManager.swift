@@ -8,7 +8,7 @@
 import Foundation
 
 class UserDefaultsManager {
-    
+    static let shared = UserDefaultsManager()
     private let usersKey = "SavedDict"
     
     func setUsers(_ users: [User]) {
