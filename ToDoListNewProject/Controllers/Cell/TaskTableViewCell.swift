@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol TaskTableViewCellDelegate: AnyObject {
+    func didTapStatusButton( cell: TaskTableViewCell)
+}
+
+
 class TaskTableViewCell: UITableViewCell {
 
+    var delegate: TaskTableViewCellDelegate?
     
     @IBOutlet weak var cellTitle: UITextField!
     
@@ -16,6 +22,7 @@ class TaskTableViewCell: UITableViewCell {
     
     @IBOutlet weak var cellDeadline: UITextField!
     
+    @IBOutlet weak var tappedStatusBarOutlet: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,6 +37,7 @@ class TaskTableViewCell: UITableViewCell {
     
     
     @IBAction func tappedStatusBar(_ sender: UIButton) {
+        delegate?.didTapStatusButton(cell: self)
     }
     
     

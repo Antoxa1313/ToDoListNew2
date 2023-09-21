@@ -12,7 +12,7 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskTableViewCell" rowHeight="133" id="KGk-i7-Jjw" customClass="TaskTableViewCell" customModule="ToDoListNewProject" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="605" height="133"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="TaskTableViewCell" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" restorationIdentifier="TaskTableViewCell" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="605" height="133"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -22,7 +22,7 @@
                             <constraint firstAttribute="width" constant="200" id="ceb-kE-AY3"/>
                             <constraint firstAttribute="height" constant="35" id="pXu-XJ-z40"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Description" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6hy-mI-eD1">
@@ -53,20 +53,16 @@
                     </button>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="BAM-37-IbW" secondAttribute="bottom" constant="5" id="2LG-vq-Rsl"/>
                     <constraint firstItem="ml1-ab-1EW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="6ZK-vH-LcN"/>
-                    <constraint firstItem="ml1-ab-1EW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="9dQ-DG-PxR"/>
                     <constraint firstAttribute="trailing" secondItem="OMR-cE-um6" secondAttribute="trailing" constant="10" id="9eP-FT-G3E"/>
                     <constraint firstItem="BAM-37-IbW" firstAttribute="top" secondItem="6hy-mI-eD1" secondAttribute="bottom" constant="5" id="KOJ-Kw-6c3"/>
-                    <constraint firstItem="OMR-cE-um6" firstAttribute="leading" secondItem="6hy-mI-eD1" secondAttribute="trailing" constant="312" id="Wn1-0g-ydS"/>
+                    <constraint firstItem="OMR-cE-um6" firstAttribute="leading" secondItem="6hy-mI-eD1" secondAttribute="trailing" priority="250" constant="312" id="Wn1-0g-ydS" userLabel="Tapped Status Bar Outlet.centerY = Cell Description.centerY"/>
                     <constraint firstItem="6hy-mI-eD1" firstAttribute="top" secondItem="ml1-ab-1EW" secondAttribute="bottom" constant="5" id="Zj6-70-ZIB"/>
                     <constraint firstItem="BAM-37-IbW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ayB-hg-Q6K"/>
-                    <constraint firstItem="6hy-mI-eD1" firstAttribute="top" secondItem="ml1-ab-1EW" secondAttribute="bottom" constant="5" id="gAc-UI-8L3"/>
                     <constraint firstItem="ml1-ab-1EW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="gK9-gc-7ln"/>
                     <constraint firstItem="OMR-cE-um6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="40" id="mlv-Og-Ghb"/>
-                    <constraint firstItem="6hy-mI-eD1" firstAttribute="top" secondItem="ml1-ab-1EW" secondAttribute="bottom" constant="5" id="o95-36-GAb"/>
-                    <constraint firstItem="BAM-37-IbW" firstAttribute="top" secondItem="6hy-mI-eD1" secondAttribute="bottom" constant="5" id="s5k-cJ-FJb"/>
                     <constraint firstItem="6hy-mI-eD1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="tsk-Es-aKX"/>
-                    <constraint firstItem="ml1-ab-1EW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ynS-VL-yXt"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -74,6 +70,7 @@
                 <outlet property="cellDeadline" destination="BAM-37-IbW" id="Y0E-fa-oaf"/>
                 <outlet property="cellDescription" destination="6hy-mI-eD1" id="v0v-Qx-eHJ"/>
                 <outlet property="cellTitle" destination="ml1-ab-1EW" id="qL3-Lx-gL9"/>
+                <outlet property="tappedStatusBarOutlet" destination="OMR-cE-um6" id="ZWJ-Ee-9qj"/>
             </connections>
             <point key="canvasLocation" x="-78.625954198473281" y="51.056338028169016"/>
         </tableViewCell>
