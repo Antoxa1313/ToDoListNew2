@@ -59,6 +59,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewWillAppear(animated)
         users = UserDefaultsManager.shared.getUsers() ?? [User]()
         tasks = users[userIndex].task ?? [Task]()
+        
         tableView.reloadData()
     }
 
