@@ -41,6 +41,23 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.cellDescription?.text = tasks[indexPath.row].cellDescription
         cell.cellDeadline?.text = tasks[indexPath.row].cellDeadline
         cell.tappedStatusBarOutlet?.setTitle(tasks[indexPath.row].cellStatus, for: .normal)
+        
+        switch tasks[indexPath.row].cellStatus {
+            
+        case "In Progress":
+            cell.tappedStatusBarOutlet.backgroundColor = .systemOrange
+            
+        case "To Do":
+            cell.tappedStatusBarOutlet.backgroundColor = .systemRed
+            
+        case "Done":
+            cell.tappedStatusBarOutlet.backgroundColor = .systemGreen
+            
+        default:
+            break
+        }
+        
+        cell.delegate = self
         return cell
     }
 
