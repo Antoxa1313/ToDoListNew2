@@ -149,6 +149,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <connections>
+                                    <action selector="tappedStatusButton:" destination="vou-BY-Jfa" eventType="touchUpInside" id="I9W-nx-CYF"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7RG-TZ-nCf">
                                 <rect key="frame" x="150" y="229" width="80" height="35"/>
@@ -158,6 +161,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Submit"/>
+                                <connections>
+                                    <action selector="tappedSubmitButton:" destination="vou-BY-Jfa" eventType="touchUpInside" id="2ZC-Y6-E9M"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Igv-8Y-XYX"/>
@@ -174,6 +180,10 @@
                             <constraint firstItem="7RG-TZ-nCf" firstAttribute="leading" secondItem="Igv-8Y-XYX" secondAttribute="leading" constant="150" id="xIJ-IK-CDn"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="detailDescriptionTextField" destination="pkY-p9-EcX" id="fRh-W1-ji0"/>
+                        <outlet property="detailTitleTextField" destination="Bsr-EV-sLl" id="AAj-YN-gfm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2yj-rZ-60N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

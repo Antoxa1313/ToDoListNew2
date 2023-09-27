@@ -15,7 +15,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     var tasks = [Task]()
     var users = [User]()
-    var userIndex = Int()
+   
 //    var tasks =
 
 //     [
@@ -70,6 +70,14 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.register(nib, forCellReuseIdentifier: "TaskTableViewCell")
         tableView.delegate = self
         tableView.dataSource = self
+        
+        //Setup
+        if !UserDefaults().bool(forKey: "setup") {
+            UserDefaults().set(true, forKey: "setup")
+            UserDefaults().set(0, forKey: "count")
+            
+            updateTasks()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,8 +88,28 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.reloadData()
     }
 
+    func updateTasks(){
+        
+        tasks.removeAll()
+        
+        guard let count = UserDefaults().value(forKey: "count") as? Int else {
+            return
+        }
+        for x in 0..<count {
+            if let task = UserDefaults().value(forKey: "task_\(x+1)") as? String{
+                tasks.append(task)
+            }
+        }
+        tableView.reloadData()
+    }
+    
     @IBAction func addButtonPressed(_ sender: UIButton) {
         let vc2 = storyboard?.instantiateViewController(withIdentifier: "detail") as! TaskDetailViewController
+        vc2.update = {
+            DispatchQueue.main.async {
+                self.updateTasks()
+            }
+        }
             self.navigationController?.pushViewController(vc2, animated: true)
         
     }
