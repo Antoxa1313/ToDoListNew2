@@ -15,7 +15,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     var tasks = [Task]()
     var users = [User]()
-   
+   var userIndex = Int ()
 //    var tasks =
 
 //     [
@@ -34,6 +34,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         return tasks.count
     }
 
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath) as! TaskTableViewCell
 
