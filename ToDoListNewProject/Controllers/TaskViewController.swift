@@ -97,7 +97,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
             return
         }
         for x in 0..<count {
-            if let task = UserDefaults().value(forKey: "task_\(x+1)") as? String{
+            if let task = UserDefaults().value(forKey: "task_\(x+1)") as? Task{
                 tasks.append(task)
             }
         }
@@ -106,11 +106,11 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
         let vc2 = storyboard?.instantiateViewController(withIdentifier: "detail") as! TaskDetailViewController
-        vc2.update = {
-            DispatchQueue.main.async {
-                self.updateTasks()
-            }
-        }
+//        vc2.update = {
+//            DispatchQueue.main.async {
+//                self.updateTasks()
+//            }
+//        }
             self.navigationController?.pushViewController(vc2, animated: true)
         
     }

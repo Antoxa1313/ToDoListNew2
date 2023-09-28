@@ -52,7 +52,11 @@ class TaskDetailViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func tappedSubmitButton(_ sender: UIButton) {
+        
+        saveTask()
+            
+        }
     }
     
     
-}
+
