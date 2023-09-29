@@ -80,12 +80,21 @@ class SignInViewController: UIViewController {
         } else if passwordTextField.text == "" {
             showErrorAlert(withDescription: "Please write your password.")
         } else {
-            if (users.first(where: {$0.login == emailTextField.text}) != nil) &&
-                (users.first(where: {$0.password == passwordTextField.text}) != nil)
+//            if (users.first(where: {$0.login == emailTextField.text}) != nil) &&
+//                (users.first(where: {$0.password == passwordTextField.text}) != nil)
 
-            { let vc = storyboard?.instantiateViewController(withIdentifier: "task") as! TaskViewController
-                self.navigationController?.pushViewController(vc, animated: true)
+            for i in users.indices{
+                if users[i].login == emailTextField.text,
+                   users[i].password == passwordTextField.text{
+                    userIndex = i
+                    let vc = storyboard?.instantiateViewController(withIdentifier: "task") as! TaskViewController
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    
+                    vc.userIndex = userIndex
+                }
             }
+            
+            
         }
         
         emailTextField.text = ""

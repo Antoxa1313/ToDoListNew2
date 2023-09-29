@@ -8,14 +8,43 @@
 import UIKit
 
 class TaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TaskTableViewCellDelegate {
-    func didTapStatusButton(cell: TaskTableViewCell) {
-       
-    }
+    
+   
     
 
     var tasks = [Task]()
     var users = [User]()
    var userIndex = Int ()
+    
+    
+   
+    @IBOutlet weak var tableView: UITableView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+       let nib = UINib(nibName: "TaskTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "TaskTableViewCell")
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        //Setup
+//        if !UserDefaults().bool(forKey: "setup") {
+//            UserDefaults().set(true, forKey: "setup")
+//            UserDefaults().set(0, forKey: "count")
+//
+//            updateTasks()
+//        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        users = UserDefaultsManager.shared.getUsers()
+        tasks = users[userIndex].task ?? [Task]()
+        
+        tableView.reloadData()
+        print(userIndex)
+        print(users[userIndex].task )
+    }
 //    var tasks =
 
 //     [
@@ -31,7 +60,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasks.count
+        return users[userIndex].task?.count ?? 0
     }
 
     
@@ -62,50 +91,36 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
 
-
-    @IBOutlet weak var tableView: UITableView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-       let nib = UINib(nibName: "TaskTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "TaskTableViewCell")
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        //Setup
-        if !UserDefaults().bool(forKey: "setup") {
-            UserDefaults().set(true, forKey: "setup")
-            UserDefaults().set(0, forKey: "count")
-            
-            updateTasks()
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        users = UserDefaultsManager.shared.getUsers() ?? [User]()
-        tasks = users[userIndex].task ?? [Task]()
-        
-        tableView.reloadData()
+    func didTapStatusButton(cell: TaskTableViewCell) {
+       
     }
 
-    func updateTasks(){
-        
-        tasks.removeAll()
-        
-        guard let count = UserDefaults().value(forKey: "count") as? Int else {
-            return
-        }
-        for x in 0..<count {
-            if let task = UserDefaults().value(forKey: "task_\(x+1)") as? Task{
-                tasks.append(task)
-            }
-        }
-        tableView.reloadData()
-    }
+//    func updateTasks(){
+//
+//        tasks.removeAll()
+//
+//        guard let count = UserDefaults().value(forKey: "count") as? Int else {
+//            return
+//        }
+//        for x in 0..<count {
+//            if let task = UserDefaults().value(forKey: "task_\(x+1)") as? Task{
+//                tasks.append(task)
+//            }
+//        }
+//        tableView.reloadData()
+//    }
+    
+  
+    
+    
+    
+    
+
+   
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
         let vc2 = storyboard?.instantiateViewController(withIdentifier: "detail") as! TaskDetailViewController
+        vc2.userIndex = userIndex
 //        vc2.update = {
 //            DispatchQueue.main.async {
 //                self.updateTasks()

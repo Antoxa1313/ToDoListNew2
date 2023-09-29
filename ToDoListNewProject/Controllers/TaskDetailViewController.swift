@@ -9,39 +9,55 @@ import UIKit
 
 class TaskDetailViewController: UIViewController, UITextFieldDelegate {
 
+    var tasks = [Task]()
+    var users = [User]()
+    var userIndex = Int ()
+
     
     @IBOutlet weak var detailTitleTextField: UITextField!
     
     
     @IBOutlet weak var detailDescriptionTextField: UITextField!
     
-    var update: (()-> Void)?
+//    var update: (()-> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         detailTitleTextField.delegate = self
+        users = UserDefaultsManager.shared.getUsers()
     }
 
-    internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        saveTask()
-        return true
-    }
+//    internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        
+//        saveTask()
+//        return true
+//    }
     
     func saveTask() {
         
-        guard let text = detailTitleTextField.text, !text.isEmpty else {
-           return
+        let newTask = Task(cellTitle: detailTitleTextField.text ?? "", cellDescription: detailTitleTextField.text ?? "", cellDeadline: "01/01/01", cellStatus: "Done")
+        if users[userIndex].task == nil {
+            users[userIndex] = User(login: users[userIndex].login, password: users[userIndex].password,task: [newTask])
+        } else {
+            users[userIndex].task?.append(newTask)
         }
         
-        guard let count = UserDefaults().value(forKey: "count") as? Int else {
-            return
-        }
-        let newCount = count + 1
-        UserDefaults().set(newCount, forKey: "count")
-        UserDefaults().set(text, forKey: "task_\(newCount)")
+        UserDefaultsManager.shared.setUsers(users)
         
-        update?()
+        print(userIndex)
+        print(users[userIndex].task )
+//        guard let text = detailTitleTextField.text, !text.isEmpty else {
+//           return
+//        }
+//
+//        guard let count = UserDefaults().value(forKey: "count") as? Int else {
+//            return
+//        }
+//        let newCount = count + 1
+//        UserDefaults().set(newCount, forKey: "count")
+//        UserDefaults().set(text, forKey: "task_\(newCount)")
+        
+//        update?()
         
         navigationController?.popViewController(animated: true)
     }
