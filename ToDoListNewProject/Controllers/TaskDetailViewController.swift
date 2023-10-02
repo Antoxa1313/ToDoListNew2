@@ -27,15 +27,11 @@ class TaskDetailViewController: UIViewController, UITextFieldDelegate {
         users = UserDefaultsManager.shared.getUsers()
     }
 
-//    internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        
-//        saveTask()
-//        return true
-//    }
+
     
     func saveTask() {
         
-        let newTask = Task(cellTitle: detailTitleTextField.text ?? "", cellDescription: detailTitleTextField.text ?? "", cellDeadline: "01/01/01", cellStatus: "Done")
+        let newTask = Task(cellTitle: detailTitleTextField.text ?? "", cellDescription: detailDescriptionTextField.text ?? "", cellDeadline: "01/01/01", cellStatus: "ToDo")
         if users[userIndex].task == nil {
             users[userIndex] = User(login: users[userIndex].login, password: users[userIndex].password,task: [newTask])
         } else {

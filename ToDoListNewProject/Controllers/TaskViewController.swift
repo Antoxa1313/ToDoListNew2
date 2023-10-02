@@ -55,9 +55,9 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
 //            Task(cellTitle: "Multifamily", cellDescription: "Property", cellDeadline: "2024/10/12", cellStatus: "Todo")
 //        ]
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.deselectRow(at: indexPath, animated: true)
+//    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users[userIndex].task?.count ?? 0
@@ -92,7 +92,36 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     func didTapStatusButton(cell: TaskTableViewCell) {
-       
+        if let chosenIndex = tableView.indexPath(for: cell) {
+            var statusNow = tasks[chosenIndex.row].cellStatus
+            
+            switch statusNow {
+            case "To Do":
+                statusNow = "Done"
+                tasks[chosenIndex.row].cellStatus = statusNow
+                tableView.reloadData()
+                users[userIndex].task?[chosenIndex.row].cellStatus = statusNow
+                UserDefaultsManager.shared.setUsers(users)
+                
+            case "In progress":
+                statusNow = "To Do"
+                tasks[chosenIndex.row].cellStatus = statusNow
+                tableView.reloadData()
+                users[userIndex].task?[chosenIndex.row].cellStatus = statusNow
+                UserDefaultsManager.shared.setUsers(users)
+                
+            case "Done":
+                statusNow = "In progress"
+                tasks[chosenIndex.row].cellStatus = statusNow
+                tableView.reloadData()
+                users[userIndex].task?[chosenIndex.row].cellStatus = statusNow
+                UserDefaultsManager.shared.setUsers(users)
+                
+            default:
+                break
+            }
+            
+        }
     }
 
 //    func updateTasks(){
