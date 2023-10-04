@@ -55,9 +55,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
 //            Task(cellTitle: "Multifamily", cellDescription: "Property", cellDeadline: "2024/10/12", cellStatus: "Todo")
 //        ]
 
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
-//    }
+    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users[userIndex].task?.count ?? 0
@@ -123,29 +121,6 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
             
         }
     }
-
-//    func updateTasks(){
-//
-//        tasks.removeAll()
-//
-//        guard let count = UserDefaults().value(forKey: "count") as? Int else {
-//            return
-//        }
-//        for x in 0..<count {
-//            if let task = UserDefaults().value(forKey: "task_\(x+1)") as? Task{
-//                tasks.append(task)
-//            }
-//        }
-//        tableView.reloadData()
-//    }
-    
-  
-    
-    
-    
-    
-
-   
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
         let vc2 = storyboard?.instantiateViewController(withIdentifier: "detail") as! TaskDetailViewController
@@ -160,5 +135,14 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let selectedTask = tasks[indexPath.row]
+        let vc2 = storyboard?.instantiateViewController(withIdentifier: "detail") as! TaskDetailViewController
+        vc2.tasks[indexPath.row].cellTitle = selectedTask.cellTitle
+        vc2.tasks[indexPath.row].cellDescription = selectedTask.cellDescription
+        
+        self.navigationController?.pushViewController(vc2, animated: true)
+    }
     
 }
