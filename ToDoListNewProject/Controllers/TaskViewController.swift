@@ -120,6 +120,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             
         }
+        print("кнопка натискається")
     }
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
@@ -139,6 +140,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let selectedTask = tasks[indexPath.row]
         let vc2 = storyboard?.instantiateViewController(withIdentifier: "detail") as! TaskDetailViewController
+        vc2.userIndex = userIndex
         vc2.tasks[indexPath.row].cellTitle = selectedTask.cellTitle
         vc2.tasks[indexPath.row].cellDescription = selectedTask.cellDescription
         
