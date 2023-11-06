@@ -72,14 +72,16 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         switch tasks[indexPath.row].cellStatus {
             
-        case "In Progress":
-            cell.tappedStatusBarOutlet.backgroundColor = .systemOrange
+     
             
-        case "To Do":
+        case "ToDo":
             cell.tappedStatusBarOutlet.backgroundColor = .systemRed
             
         case "Done":
             cell.tappedStatusBarOutlet.backgroundColor = .systemGreen
+            
+        case "In Progress":
+            cell.tappedStatusBarOutlet.backgroundColor = .systemOrange
             
         default:
             break
@@ -94,22 +96,23 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
             var statusNow = tasks[chosenIndex.row].cellStatus
             
             switch statusNow {
-            case "To Do":
+            case "ToDo":
                 statusNow = "Done"
                 tasks[chosenIndex.row].cellStatus = statusNow
                 tableView.reloadData()
                 users[userIndex].task?[chosenIndex.row].cellStatus = statusNow
                 UserDefaultsManager.shared.setUsers(users)
                 
-            case "In progress":
-                statusNow = "To Do"
+                
+            case "Done":
+                statusNow = "In progress"
                 tasks[chosenIndex.row].cellStatus = statusNow
                 tableView.reloadData()
                 users[userIndex].task?[chosenIndex.row].cellStatus = statusNow
                 UserDefaultsManager.shared.setUsers(users)
                 
-            case "Done":
-                statusNow = "In progress"
+            case "In progress":
+                statusNow = "ToDo"
                 tasks[chosenIndex.row].cellStatus = statusNow
                 tableView.reloadData()
                 users[userIndex].task?[chosenIndex.row].cellStatus = statusNow
@@ -141,9 +144,11 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         let selectedTask = tasks[indexPath.row]
         let vc2 = storyboard?.instantiateViewController(withIdentifier: "detail") as! TaskDetailViewController
         vc2.userIndex = userIndex
-        vc2.tasks[indexPath.row].cellTitle = selectedTask.cellTitle
-        vc2.tasks[indexPath.row].cellDescription = selectedTask.cellDescription
+        vc2.currentTask = selectedTask
         
+//        vc2.tasks[indexPath.row].cellTitle = selectedTask.cellTitle
+//        vc2.tasks[indexPath.row].cellDescription = selectedTask.cellDescription
+//
         self.navigationController?.pushViewController(vc2, animated: true)
     }
     

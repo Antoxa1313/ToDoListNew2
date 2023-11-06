@@ -9,7 +9,14 @@ import UIKit
 
 class TaskDetailViewController: UIViewController, UITextFieldDelegate {
 
-    var tasks = [Task]()
+    
+    
+    var currentTask = Task(
+        cellTitle: "",
+        cellDescription: "",
+        cellDeadline: "",
+        cellStatus: ""
+    )
     var users = [User]()
     var userIndex = Int ()
 
