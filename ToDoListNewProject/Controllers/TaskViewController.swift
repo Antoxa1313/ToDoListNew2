@@ -27,13 +27,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         
-        //Setup
-//        if !UserDefaults().bool(forKey: "setup") {
-//            UserDefaults().set(true, forKey: "setup")
-//            UserDefaults().set(0, forKey: "count")
-//
-//            updateTasks()
-//        }
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,15 +39,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         print(userIndex)
         print(users[userIndex].task )
     }
-//    var tasks =
 
-//     [
-//         Task(cellTitle: "Create app", cellDescription: "ios app", cellDeadline: "2024/10/12", cellStatus: "In progress"),
-//            Task(cellTitle: "Sign the lease", cellDescription: "Rental agreement", cellDeadline: "2024/10/12", cellStatus: "Todo"),
-//            Task(cellTitle: "Options system", cellDescription: "Trading system", cellDeadline: "2024/10/12", cellStatus: "In progress"),
-//            Task(cellTitle: "Fix Iphone", cellDescription: "Broken screen", cellDeadline: "2024/10/12", cellStatus: "Todo"),
-//            Task(cellTitle: "Multifamily", cellDescription: "Property", cellDeadline: "2024/10/12", cellStatus: "Todo")
-//        ]
 
     
 
@@ -77,11 +63,13 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         case "ToDo":
             cell.tappedStatusBarOutlet.backgroundColor = .systemRed
             
+        case "In Progress":
+            cell.tappedStatusBarOutlet.backgroundColor = .systemOrange
+            
         case "Done":
             cell.tappedStatusBarOutlet.backgroundColor = .systemGreen
             
-        case "In Progress":
-            cell.tappedStatusBarOutlet.backgroundColor = .systemOrange
+       
             
         default:
             break
@@ -103,6 +91,12 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
                 users[userIndex].task?[chosenIndex.row].cellStatus = statusNow
                 UserDefaultsManager.shared.setUsers(users)
                 
+            case "In progress":
+                statusNow = "ToDo"
+                tasks[chosenIndex.row].cellStatus = statusNow
+                tableView.reloadData()
+                users[userIndex].task?[chosenIndex.row].cellStatus = statusNow
+                UserDefaultsManager.shared.setUsers(users)
                 
             case "Done":
                 statusNow = "In progress"
@@ -111,12 +105,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
                 users[userIndex].task?[chosenIndex.row].cellStatus = statusNow
                 UserDefaultsManager.shared.setUsers(users)
                 
-            case "In progress":
-                statusNow = "ToDo"
-                tasks[chosenIndex.row].cellStatus = statusNow
-                tableView.reloadData()
-                users[userIndex].task?[chosenIndex.row].cellStatus = statusNow
-                UserDefaultsManager.shared.setUsers(users)
+           
                 
             default:
                 break
@@ -129,11 +118,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func addButtonPressed(_ sender: UIButton) {
         let vc2 = storyboard?.instantiateViewController(withIdentifier: "detail") as! TaskDetailViewController
         vc2.userIndex = userIndex
-//        vc2.update = {
-//            DispatchQueue.main.async {
-//                self.updateTasks()
-//            }
-//        }
+
             self.navigationController?.pushViewController(vc2, animated: true)
         
     }
@@ -152,4 +137,15 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationController?.pushViewController(vc2, animated: true)
     }
     
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            tasks.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .automatic)
+//        }
+    }
 }
