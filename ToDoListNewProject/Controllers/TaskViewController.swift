@@ -91,7 +91,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
                 users[userIndex].task?[chosenIndex.row].cellStatus = statusNow
                 UserDefaultsManager.shared.setUsers(users)
                 
-            case "In progress":
+            case "In Progress":
                 statusNow = "ToDo"
                 tasks[chosenIndex.row].cellStatus = statusNow
                 tableView.reloadData()
@@ -99,7 +99,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
                 UserDefaultsManager.shared.setUsers(users)
                 
             case "Done":
-                statusNow = "In progress"
+                statusNow = "In Progress"
                 tasks[chosenIndex.row].cellStatus = statusNow
                 tableView.reloadData()
                 users[userIndex].task?[chosenIndex.row].cellStatus = statusNow
@@ -143,9 +143,10 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            tasks.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .automatic)
-//        }
+        if editingStyle == .delete {
+            users[userIndex].task?.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+              UserDefaultsManager.shared.setUsers(users)
+        }
     }
 }
