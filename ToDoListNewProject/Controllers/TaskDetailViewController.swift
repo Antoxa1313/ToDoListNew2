@@ -21,16 +21,23 @@ class TaskDetailViewController: UIViewController, UITextFieldDelegate {
     var userIndex = Int ()
 
     
+    
     @IBOutlet weak var detailTitleTextField: UITextField!
     
     
     @IBOutlet weak var detailDescriptionTextField: UITextField!
+   
+    @IBOutlet weak var tappeddetailStatusBarOutlet: UIButton!
+    
+    
     
 //    var update: (()-> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         detailTitleTextField.delegate = self
+        detailTitleTextField.text = currentTask.cellTitle
+        detailDescriptionTextField.text = currentTask.cellDescription
         users = UserDefaultsManager.shared.getUsers()
     }
 
@@ -55,8 +62,8 @@ class TaskDetailViewController: UIViewController, UITextFieldDelegate {
     }
     
 
-    @IBAction func tappedStatusButton(_ sender: UIButton) {
-    }
+//    @IBAction func tappedStatusButton(_ sender: UIButton) {
+//    }
     
     
     @IBAction func tappedSubmitButton(_ sender: UIButton) {

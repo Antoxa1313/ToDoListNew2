@@ -142,18 +142,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGP-F1-1i5">
-                                <rect key="frame" x="308" y="109" width="75" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="SPK-gw-5Jn"/>
-                                    <constraint firstAttribute="width" constant="75" id="rFC-Nq-Vpi"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
-                                <connections>
-                                    <action selector="tappedStatusButton:" destination="vou-BY-Jfa" eventType="touchUpInside" id="I9W-nx-CYF"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7RG-TZ-nCf">
                                 <rect key="frame" x="150" y="229" width="80" height="35"/>
                                 <constraints>
@@ -166,6 +154,16 @@
                                     <action selector="tappedSubmitButton:" destination="vou-BY-Jfa" eventType="touchUpInside" id="2ZC-Y6-E9M"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hbb-Si-eYi">
+                                <rect key="frame" x="304" y="109" width="73" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Status">
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Igv-8Y-XYX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -173,17 +171,16 @@
                             <constraint firstItem="Bsr-EV-sLl" firstAttribute="top" secondItem="Igv-8Y-XYX" secondAttribute="top" constant="50" id="6Lg-7M-HAc"/>
                             <constraint firstItem="Igv-8Y-XYX" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="pkY-p9-EcX" secondAttribute="trailing" priority="500" constant="10" id="Bm9-Og-QOE"/>
                             <constraint firstItem="7RG-TZ-nCf" firstAttribute="top" secondItem="pkY-p9-EcX" secondAttribute="bottom" priority="250" constant="35" id="CRv-qN-byj"/>
-                            <constraint firstItem="wGP-F1-1i5" firstAttribute="top" secondItem="Igv-8Y-XYX" secondAttribute="top" constant="50" id="MY3-xv-r50"/>
                             <constraint firstItem="pkY-p9-EcX" firstAttribute="leading" secondItem="Igv-8Y-XYX" secondAttribute="leading" constant="10" id="Rzc-Pk-7yM"/>
                             <constraint firstItem="pkY-p9-EcX" firstAttribute="top" secondItem="Bsr-EV-sLl" secondAttribute="bottom" constant="15" id="XAh-Mc-HBN"/>
                             <constraint firstItem="Bsr-EV-sLl" firstAttribute="leading" secondItem="Igv-8Y-XYX" secondAttribute="leading" constant="10" id="bAK-Xs-Jdk"/>
-                            <constraint firstItem="Igv-8Y-XYX" firstAttribute="trailing" secondItem="wGP-F1-1i5" secondAttribute="trailing" constant="10" id="mpm-Dv-4Pt"/>
                             <constraint firstItem="7RG-TZ-nCf" firstAttribute="leading" secondItem="Igv-8Y-XYX" secondAttribute="leading" constant="150" id="xIJ-IK-CDn"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="detailDescriptionTextField" destination="pkY-p9-EcX" id="fRh-W1-ji0"/>
                         <outlet property="detailTitleTextField" destination="Bsr-EV-sLl" id="AAj-YN-gfm"/>
+                        <outlet property="tappeddetailStatusBarOutlet" destination="Hbb-Si-eYi" id="nz7-bb-opS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2yj-rZ-60N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -230,6 +227,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
