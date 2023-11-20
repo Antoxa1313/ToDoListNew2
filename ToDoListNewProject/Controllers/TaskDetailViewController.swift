@@ -38,6 +38,7 @@ class TaskDetailViewController: UIViewController, UITextFieldDelegate {
         detailTitleTextField.delegate = self
         detailTitleTextField.text = currentTask.cellTitle
         detailDescriptionTextField.text = currentTask.cellDescription
+        tappeddetailStatusBarOutlet.setTitle(currentTask.cellStatus, for: .normal)
         users = UserDefaultsManager.shared.getUsers()
     }
 
