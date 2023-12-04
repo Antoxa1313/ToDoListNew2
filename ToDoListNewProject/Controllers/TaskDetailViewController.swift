@@ -50,7 +50,12 @@ class TaskDetailViewController: UIViewController, UITextFieldDelegate {
         if users[userIndex].task == nil {
             users[userIndex] = User(login: users[userIndex].login, password: users[userIndex].password,task: [newTask])
         } else {
-            users[userIndex].task?.append(newTask)
+//            users[userIndex].task?.append(newTask)
+            users[userIndex].task
+            detailTitleTextField.text = currentTask.cellTitle
+            detailDescriptionTextField.text = currentTask.cellDescription
+            tappeddetailStatusBarOutlet.setTitle(currentTask.cellStatus, for: .normal)
+            users = UserDefaultsManager.shared.getUsers()
         }
         
         UserDefaultsManager.shared.setUsers(users)
