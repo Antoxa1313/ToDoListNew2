@@ -118,7 +118,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func addButtonPressed(_ sender: UIButton) {
         let vc2 = storyboard?.instantiateViewController(withIdentifier: "detail") as! TaskDetailViewController
         vc2.userIndex = userIndex
-
+        vc2.isNewTask = true
             self.navigationController?.pushViewController(vc2, animated: true)
         
     }
@@ -130,6 +130,8 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         let vc2 = storyboard?.instantiateViewController(withIdentifier: "detail") as! TaskDetailViewController
         vc2.userIndex = userIndex
         vc2.currentTask = selectedTask
+        vc2.editedTaskIndex = indexPath.row
+        vc2.isNewTask = false
         
 //        vc2.tasks[indexPath.row].cellTitle = selectedTask.cellTitle
 //        vc2.tasks[indexPath.row].cellDescription = selectedTask.cellDescription
